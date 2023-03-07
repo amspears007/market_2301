@@ -82,6 +82,19 @@ RSpec.describe Market do
       vendor2.stock(item4, 50) 
       vendor2.stock(item2, 7) 
       expect(market.sorted_item_list).to match_array(['Banana Nice Cream','Peach', 'Tomato'])
+    end
+
+    xit 'can list overstocked items' do
+      #item is overstocked if it is sold by more than 1 vendor 
+      #AND the total quantity is greater than 50.
+      market.add_vendor(vendor1)
+      vendor1.stock(item1, 35)
+      vendor1.stock(item2, 7) 
+      market.add_vendor(vendor2)
+      vendor2.stock(item1, 50) 
+      vendor2.stock(item2, 7) 
+
+      expect(market.overstocked_items).to eq([item1])
 
     end
   end
