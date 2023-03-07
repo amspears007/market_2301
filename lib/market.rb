@@ -16,4 +16,11 @@ class Market
       vendor.name
     end
   end
+
+  def vendors_that_sell(item)
+    items = vendors.find_all do |vendor|
+      vendor.inventory.keys.include?(item)
+    end
+    # require 'pry'; binding.pry
+  end
 end
