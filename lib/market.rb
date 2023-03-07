@@ -34,16 +34,9 @@ class Market
 
   def overstocked_items
     all_items.find_all do |item|
-     
+      vendors_that_sell(item).length > 1 && total_quantity(item) >= 50
     end
-    #   require 'pry'; binding.pry
-    # end
-    # total_quantity = vendors.map do |vendor|
-    #   vendor.inventory.map do |item, amount|
-    #     amount
-      # end
-    end
-  # end
+  end
 
   def all_items
     vendors.map do |vendor|
