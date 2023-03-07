@@ -14,4 +14,12 @@ class Vendor
   def stock(item, amount)
     inventory[item] += amount
   end
+
+  def potential_revenue
+    total = inventory.map do |item, price|
+      item.price * price
+    end
+    total.sum
+  end
+
 end

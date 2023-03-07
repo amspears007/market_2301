@@ -22,4 +22,6 @@ class Market
       vendor.inventory.keys.include?(item)
     end
   end
+
+ 
 end
