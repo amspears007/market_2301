@@ -94,12 +94,31 @@ RSpec.describe Market do
       vendor2.stock(item1, 50) 
       vendor2.stock(item2, 7) 
 
-      expect(market.all_items).to eq([item1, item2])
-      # expect(market.overstocked_items).to eq([item1])
+      
+      expect(market.overstocked_items).to eq([item1])
 
     end
 
     it 'can list all items' do
+      market.add_vendor(vendor1)
+      vendor1.stock(item1, 35)
+      vendor1.stock(item2, 7) 
+      market.add_vendor(vendor2)
+      vendor2.stock(item1, 50) 
+      vendor2.stock(item2, 7) 
+
+      expect(market.all_items).to eq([item1, item2])
+    end
+
+    it 'can list total quantity of all items' do
+      market.add_vendor(vendor1)
+      vendor1.stock(item1, 35)
+      vendor1.stock(item2, 7) 
+      market.add_vendor(vendor2)
+      vendor2.stock(item1, 50) 
+      vendor2.stock(item2, 7) 
+
+      expect(market.total_quantity(item2)).to eq(14)
     end
   end
 end
