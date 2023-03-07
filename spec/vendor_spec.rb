@@ -28,7 +28,5 @@ RSpec.describe Vendor do
       item1 => 55,
       item2 => 12
       })
-
-
   end
 end
