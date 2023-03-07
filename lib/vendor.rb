@@ -8,7 +8,7 @@ class Vendor
   end
 
   def check_stock(item)
-    inventory.default
+    inventory[item]
   end
 
   def stock(item, amount)
