@@ -91,6 +91,12 @@ RSpec.describe Market do
     market.add_vendor(vendor1)
     market.add_vendor(vendor2)
     market.add_vendor(vendor3)
+    expect(market.vendors_that_sell(item1)).to eq([vendor1, vendor3])
     expect(market.vendors_that_sell(item4)).to eq([vendor2])
+  end
+
+  xit 'calculate their potential_revenue' do
+    #the sum of all their items' price * quantity.
+    
   end
 end
