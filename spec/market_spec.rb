@@ -11,18 +11,6 @@ RSpec.describe Market do
   let(:item3) {Item.new({name: "Peach-Raspberry Nice Cream", price: "$5.30"})}
   let(:item4) {Item.new({name: "Banana Nice Cream", price: "$4.25"})}
 
-  # before do
-  #   vendor1.stock(item1, 35)
-  #   vendor1.stock(item2, 7) 
-  #   vendor2.stock(item4, 50) 
-  #   vendor2.stock(item3, 25)
-  #   vendor3.stock(item1, 65) 
-
-  #   market.add_vendor(vendor1)
-  #   market.add_vendor(vendor2)
-  #   market.add_vendor(vendor3)
-  # end
-
   it 'exists' do
     market = Market.new("South Pearl Street Farmers Market")   
      expect(market).to be_a(Market)
@@ -56,18 +44,6 @@ RSpec.describe Market do
     expect(market.vendors).to eq([vendor1, vendor2, vendor3])
   end
 
-  # describe 'methods for vendors' do
-  #   before do
-  #   vendor1.stock(item1, 35)
-  #   vendor1.stock(item2, 7) 
-  #   vendor2.stock(item4, 50) 
-  #   vendor2.stock(item3, 25)
-  #   vendor3.stock(item1, 65) 
-
-  #   market.add_vendor(vendor1)
-  #   market.add_vendor(vendor2)
-  #   market.add_vendor(vendor3)
-  # end
   it 'returns an array of vendor names' do
     vendor1.stock(item1, 35)
     vendor1.stock(item2, 7) 
@@ -95,5 +71,18 @@ RSpec.describe Market do
     expect(market.vendors_that_sell(item4)).to eq([vendor2])
   end
 
-  
+  describe 'Iteration 3' do
+    it 'returns a list of names of all items the Vendors have in stock, sorted alphabetically' do
+      market.add_vendor(vendor1)
+      vendor1.stock(item1, 35)
+      vendor1.stock(item2, 7) 
+      expect(market.sorted_item_list).to match_array(['Peach', 'Tomato'])
+
+      market.add_vendor(vendor2)
+      vendor2.stock(item4, 50) 
+      vendor2.stock(item2, 7) 
+      expect(market.sorted_item_list).to match_array(['Banana Nice Cream','Peach', 'Tomato'])
+
+    end
+  end
 end
