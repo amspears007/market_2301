@@ -33,10 +33,20 @@ class Market
   end
 
   def overstocked_items
-    total_quantity = vendors.map do |vendor|
-      vendor.inventory.map do |item, amount|
-        amount
-      end
+    # all_items.map do |item|
+    #   require 'pry'; binding.pry
+    # end
+    # total_quantity = vendors.map do |vendor|
+    #   vendor.inventory.map do |item, amount|
+    #     amount
+      # end
     end
+  # end
+
+  def all_items
+    vendors.map do |vendor|
+      vendor.inventory.keys
+    end
+    .flatten.uniq
   end
 end
